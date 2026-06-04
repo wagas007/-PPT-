@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PARK24 / Times × 旺來瓦斯｜One Pager DM</title>
+  <style>
+    :root {
+      --orange: #f45118;
+      --orange-2: #ee741b;
+      --yellow: #ffc857;
+      --green: #5f941b;
+      --blue: #5cc7e8;
+      --line: #d7d7d7;
+      --dark: #111;
+      --muted: #444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #d9d9d9;
+      color: var(--dark);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    .page {
+      position: relative;
+      width: 794px;
+      height: 1123px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 46px rgba(0,0,0,.2);
+    }
+    .brand-band {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 118px;
+      background: var(--orange);
+      overflow: hidden;
+    }
+    .brand-band::before,
+    .brand-band::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      transform: rotate(45deg);
+    }
+    .brand-band::before { top: -88px; left: 28px; background: var(--orange-2); }
+    .brand-band::after { bottom: 108px; left: 44px; background: #eda153; }
+    .logo-mark {
+      position: absolute;
+      top: 46px;
+      left: 28px;
+      z-index: 2;
+      width: 68px;
+      filter: brightness(0) invert(1);
+    }
+    .content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      margin-left: 118px;
+      padding: 34px 40px 28px 38px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 12px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    .eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .eyebrow strong { color: var(--orange); font-size: 18px; font-weight: 900; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 146px;
+      gap: 18px;
+      align-items: start;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 900;
+    }
+    .lead {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: #303030;
+    }
+    .hero-visual {
+      position: relative;
+      height: 150px;
+    }
+    .node {
+      position: absolute;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.12);
+    }
+    .node.large { width: 92px; height: 92px; background: var(--orange); top: 34px; left: 0; font-size: 18px; line-height: 1.18; }
+    .node.small-a { width: 58px; height: 58px; background: var(--green); right: 2px; top: 0; font-size: 13px; }
+    .node.small-b { width: 62px; height: 62px; background: var(--blue); right: 0; bottom: 8px; font-size: 13px; line-height: 1.12; }
+    .connector {
+      position: absolute;
+      width: 80px;
+      height: 2px;
+      background: #bfbfbf;
+      transform: rotate(-22deg);
+      top: 64px;
+      right: 38px;
+    }
+    .main { display: grid; gap: 10px; align-content: start; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--orange);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+    .section-title::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: var(--orange);
+      transform: rotate(45deg);
+      flex: 0 0 auto;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .value-card {
+      min-height: 74px;
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--orange);
+      padding: 12px 12px 10px 13px;
+      background: #fff;
+    }
+    .value-card:nth-child(2) { border-left-color: var(--green); }
+    .value-card:nth-child(3) { border-left-color: var(--blue); }
+    .value-card:nth-child(4) { border-left-color: var(--yellow); }
+    .value-card h3 { margin-bottom: 5px; font-size: 18px; line-height: 1.18; font-weight: 900; }
+    .value-card p { color: #474747; font-size: 13.5px; line-height: 1.38; font-weight: 650; }
+    .future-hook {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 16px;
+      min-height: 142px;
+      padding: 17px 18px;
+      background: #fff7ef;
+      border: 2px solid #ffd5bd;
+    }
+    .future-hook::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -90px;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      background: rgba(244,81,24,.16);
+    }
+    .future-copy { position: relative; z-index: 1; }
+    .future-copy h2 { font-size: 25px; line-height: 1.18; font-weight: 900; margin-bottom: 8px; }
+    .future-copy p { color: #3f3f3f; font-size: 14.5px; line-height: 1.5; font-weight: 700; }
+    .future-copy strong { color: var(--orange); }
+    .future-visual {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      align-items: stretch;
+      align-content: center;
+    }
+    .metric {
+      min-height: 96px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 1px solid #ffd5bd;
+      box-shadow: 0 8px 18px rgba(244,81,24,.09);
+    }
+    .metric b { color: var(--orange); font-size: 25px; line-height: 1; font-weight: 900; white-space: nowrap; }
+    .metric span { color: #333; font-size: 13px; line-height: 1.2; font-weight: 800; text-align: center; }
+    .positioning {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .statement {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+    .statement h2 { font-size: 20px; line-height: 1.25; font-weight: 900; margin-bottom: 7px; }
+    .statement p { color: #424242; font-size: 13.5px; line-height: 1.45; font-weight: 650; }
+    .risk-box {
+      background: #f7f7f7;
+      border: 1px solid var(--line);
+      padding: 11px 12px;
+    }
+    .risk-box h3 { color: var(--orange); font-size: 17px; font-weight: 900; margin-bottom: 7px; }
+    .risk-box p { color: #3f3f3f; font-size: 13.5px; line-height: 1.42; font-weight: 650; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+    }
+    .flow-step {
+      position: relative;
+      min-height: 76px;
+      padding: 12px 14px 10px;
+      background: #fff;
+      border-right: 1px solid var(--line);
+    }
+    .flow-step:last-child { border-right: 0; }
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      right: -11px;
+      top: calc(50% - 11px);
+      z-index: 2;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      transform: rotate(45deg);
+    }
+    .flow-step:last-child::after { content: none; }
+    .flow-step strong { display: block; color: var(--orange); font-size: 21px; line-height: 1.1; font-weight: 900; margin-bottom: 6px; }
+    .flow-step span { display: block; color: #3f3f3f; font-size: 13.5px; line-height: 1.35; font-weight: 700; }
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .cta h2 { font-size: 23px; line-height: 1.18; font-weight: 900; margin-bottom: 5px; }
+    .cta p { color: #444; font-size: 14.5px; line-height: 1.45; font-weight: 650; }
+    .cta-badge {
+      width: 108px;
+      height: 108px;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 999px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(244,81,24,.28);
+    }
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-label="PARK24 / Times One Pager DM">
+    <aside class="brand-band">
+      <img class="logo-mark" src="../../shared_assets/wagas-logo.png" alt="旺來瓦斯">
+    </aside>
+
+    <section class="content">
+      <div class="eyebrow">
+        <span>PARK24 / Times × 旺來瓦斯｜試點合作提案</span>
+        <strong>One Pager</strong>
+      </div>
+
+      <header class="hero">
+        <div>
+          <h1>讓 Times 先用少量場站驗證社區型智慧服務據點</h1>
+          <p class="lead">
+            先以 1 至 3 個示範場站啟動，不承租停車格、不增加現場管理負擔，
+            用 90 天試點驗證場站服務價值與擴點條件。
+          </p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <span class="connector"></span>
+          <span class="node large">Times<br>場站</span>
+          <span class="node small-a">總部<br>框架</span>
+          <span class="node small-b">智慧<br>服務</span>
+        </div>
+      </header>
+
+      <div class="main">
+        <h2 class="section-title">PARK24 / Times 為什麼適合先做試點</h2>
+        <div class="value-grid">
+          <article class="value-card">
+            <h3>規模價值</h3>
+            <p>多據點場站網絡，適合先建立試點框架，再評估跨區複製。</p>
+          </article>
+          <article class="value-card">
+            <h3>標準化價值</h3>
+            <p>總部治理與標準流程清楚，適合用風險可控方式驗證。</p>
+          </article>
+          <article class="value-card">
+            <h3>場站價值</h3>
+            <p>活化低使用邊角空間，延伸停車場服務用途。</p>
+          </article>
+          <article class="value-card">
+            <h3>學習價值</h3>
+            <p>用 90 天資料確認使用量、異常率、客訴與場站回饋。</p>
+          </article>
+        </div>
+
+        <section class="future-hook" aria-label="未來合作想像">
+          <div class="future-copy">
+            <h2>未來想像：從 1-3 場，走向台中與桃園擴點框架</h2>
+            <p>
+              若試點成立，雙方可進一步討論台中與桃園候選場站、
+              <strong>標準化合作模型</strong>與後續擴點節奏，讓 Times 在不改變停車本業的前提下取得場站加值資料。
+            </p>
+          </div>
+          <div class="future-visual" aria-hidden="true">
+            <div class="metric"><b>1-3</b><span>示範<br>場站</span></div>
+            <div class="metric"><b>90</b><span>天<br>驗證</span></div>
+            <div class="metric"><b>20</b><span>後續<br>候選</span></div>
+          </div>
+        </section>
+
+        <div class="positioning">
+          <article class="statement">
+            <h2>合作定位：不是租格位</h2>
+            <p>
+              核心是先用具體場站確認空間、供電、動線與使用需求是否成立，
+              再由雙方共同評估是否擴點、調整或停止。
+            </p>
+          </article>
+          <article class="risk-box">
+            <h3>風險可前置確認</h3>
+            <p>
+              旺來負責設備、客服、補貨、維修、法遵、保險與數據回顧；
+              Times 協助場站、權責、供電與現勘窗口確認。
+            </p>
+          </article>
+        </div>
+
+        <h2 class="section-title">建議試點方式</h2>
+        <div class="flow">
+          <div class="flow-step">
+            <strong>1-3 場</strong>
+            <span>由總部框架先確認示範場站。</span>
+          </div>
+          <div class="flow-step">
+            <strong>90 天</strong>
+            <span>驗證使用量、補貨、異常與場站回饋。</span>
+          </div>
+          <div class="flow-step">
+            <strong>共同評估</strong>
+            <span>依據資料討論是否擴點。</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="cta">
+        <div>
+          <h2>希望安排 30 分鐘總部對焦</h2>
+          <p>討論合作模式、場站條件、試點 KPI 與 1 至 3 個示範場站評估方式。</p>
+        </div>
+        <div class="cta-badge">30 分鐘<br>總部對焦</div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

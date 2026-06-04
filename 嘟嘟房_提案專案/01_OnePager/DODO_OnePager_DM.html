@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>嘟嘟房 × 旺來瓦斯｜One Pager DM</title>
+  <style>
+    :root {
+      --orange: #f45118;
+      --orange-2: #ee741b;
+      --yellow: #ffc857;
+      --green: #5f941b;
+      --blue: #5cc7e8;
+      --teal: #60c9ad;
+      --gray: #d7d7d7;
+      --dark: #111111;
+      --muted: #555555;
+      --line: #d7d7d7;
+      --paper: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #d9d9d9;
+      color: var(--dark);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .page {
+      position: relative;
+      width: 794px;
+      height: 1123px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 18px 46px rgba(0,0,0,.2);
+    }
+
+    /* ── Left orange brand bar ── */
+    .brand-band {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 118px;
+      background: var(--orange);
+      overflow: hidden;
+    }
+
+    .brand-band::before,
+    .brand-band::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      transform: rotate(45deg);
+    }
+
+    .brand-band::before {
+      top: -88px;
+      left: 28px;
+      background: var(--orange-2);
+    }
+
+    .brand-band::after {
+      bottom: 108px;
+      left: 44px;
+      background: #eda153;
+    }
+
+    .logo-mark {
+      position: absolute;
+      top: 46px;
+      left: 28px;
+      z-index: 2;
+      width: 68px;
+      filter: brightness(0) invert(1);
+    }
+
+    /* ── Content area ── */
+    .content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      margin-left: 118px;
+      padding: 34px 40px 28px 38px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 12px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .eyebrow strong {
+      color: var(--orange);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 148px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #000000;
+    }
+
+    .lead {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: #303030;
+    }
+
+    /* ── Hero visual: three clean stat blocks ── */
+    .hero-visual {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      width: 148px;
+    }
+
+    .hero-stat {
+      display: grid;
+      align-content: center;
+      justify-items: start;
+      padding: 8px 12px;
+      border-left: 4px solid var(--orange);
+      background: #fff7ef;
+      min-height: 42px;
+    }
+
+    .hero-stat b {
+      display: block;
+      color: var(--orange);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .hero-stat span {
+      display: block;
+      color: #555;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* ── Main body ── */
+    .main {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--orange);
+      font-size: 19px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: var(--orange);
+      transform: rotate(45deg);
+      flex: 0 0 auto;
+    }
+
+    /* ── 2×2 value cards ── */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .value-card {
+      min-height: 70px;
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--orange);
+      padding: 11px 12px 10px 13px;
+      background: #fff;
+    }
+
+    .value-card:nth-child(2) { border-left-color: var(--green); }
+    .value-card:nth-child(3) { border-left-color: var(--blue); }
+    .value-card:nth-child(4) { border-left-color: var(--yellow); }
+
+    .value-card h3 {
+      margin-bottom: 5px;
+      font-size: 17px;
+      line-height: 1.18;
+      font-weight: 900;
+    }
+
+    .value-card p {
+      color: #474747;
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    /* ── Future hook (IPO + ESG angle) ── */
+    .future-hook {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 16px;
+      min-height: 134px;
+      padding: 16px 18px;
+      background: #fff7ef;
+      border: 2px solid #ffd5bd;
+    }
+
+    .future-hook::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -90px;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      background: rgba(244,81,24,.16);
+    }
+
+    .future-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .future-copy h2 {
+      color: #000;
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .future-copy p {
+      color: #3f3f3f;
+      font-size: 13.5px;
+      line-height: 1.48;
+      font-weight: 700;
+    }
+
+    .future-copy strong { color: var(--orange); }
+
+    .future-visual {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      align-content: center;
+      align-items: stretch;
+    }
+
+    .metric {
+      min-height: 88px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #ffd5bd;
+      box-shadow: 0 8px 18px rgba(244,81,24,.09);
+    }
+
+    .metric b {
+      color: var(--orange);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .metric span {
+      color: #333;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    /* ── Positioning + Risk ── */
+    .positioning {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .statement {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+
+    .statement h2 {
+      color: #000;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .statement p {
+      color: #424242;
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .risk-box {
+      background: #f7f7f7;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+    }
+
+    .risk-box h3 {
+      color: var(--orange);
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .risk-box p {
+      color: #3f3f3f;
+      font-size: 13px;
+      line-height: 1.42;
+      font-weight: 650;
+    }
+
+    /* ── Flow steps ── */
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 74px;
+      padding: 11px 14px 10px;
+      background: #fff;
+      border-right: 1px solid var(--line);
+    }
+
+    .flow-step:last-child { border-right: 0; }
+
+    .flow-step::after {
+      content: "";
+      position: absolute;
+      right: -11px;
+      top: calc(50% - 11px);
+      z-index: 2;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      transform: rotate(45deg);
+    }
+
+    .flow-step:last-child::after { content: none; }
+
+    .flow-step strong {
+      display: block;
+      color: var(--orange);
+      font-size: 20px;
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .flow-step span {
+      display: block;
+      color: #3f3f3f;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    /* ── Trial zone pills ── */
+    .candidate-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #343434;
+      padding: 6px 10px;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    /* ── CTA footer ── */
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .cta h2 {
+      color: #000;
+      font-size: 22px;
+      line-height: 1.18;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .cta p {
+      color: #444;
+      font-size: 13.5px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .cta-badge {
+      width: 108px;
+      height: 108px;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 999px;
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.2;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(244,81,24,.28);
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-label="嘟嘟房 One Pager DM">
+    <aside class="brand-band">
+      <img class="logo-mark" src="../../shared_assets/wagas-logo.png" alt="旺來瓦斯">
+    </aside>
+
+    <section class="content">
+      <!-- Eyebrow -->
+      <div class="eyebrow">
+        <span>嘟嘟房 × 旺來瓦斯｜場站複合型服務節點試點合作</span>
+        <strong>One Pager</strong>
+      </div>
+
+      <!-- Hero -->
+      <header class="hero">
+        <div>
+          <h1>台灣停車場的品牌代名詞，值得讓場站說更多故事。</h1>
+          <p class="lead">
+            旺來不是來租停車格，也不是廣告進駐。
+            我們想在嘟嘟房 1 至 3 個場站，建立複合型智慧服務節點——
+            邊角空間、旺來設備、旺來維運，嘟嘟房零成本投入。
+          </p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-stat"><b>174</b><span>全台場站</span></div>
+          <div class="hero-stat"><b>品牌第一</b><span>台灣停車場代名詞</span></div>
+          <div class="hero-stat"><b>30 年</b><span>品牌深耕</span></div>
+        </div>
+      </header>
+
+      <!-- Main body -->
+      <div class="main">
+        <h2 class="section-title">嘟嘟房場站合作能得到什麼</h2>
+        <div class="value-grid">
+          <article class="value-card">
+            <h3>場站加值</h3>
+            <p>入口邊角的閒置空間產生服務功能，不佔用任何停車格。</p>
+          </article>
+          <article class="value-card">
+            <h3>品牌升級</h3>
+            <p>場站形象從「停車場」進化為智慧服務場域，強化上市前成長敘事。</p>
+          </article>
+          <article class="value-card">
+            <h3>ESG 形象</h3>
+            <p>結合中興電工集團能源佈局，複合型節點為停車端提供 ESG 落地形象。</p>
+          </article>
+          <article class="value-card">
+            <h3>數據洞察</h3>
+            <p>90 天試點後旺來提供消費者行為報告，嘟嘟房零成本取得場站數據。</p>
+          </article>
+        </div>
+
+        <!-- Future hook: IPO story -->
+        <section class="future-hook" aria-label="嘟嘟房 IPO 合作想像">
+          <div class="future-copy">
+            <h2>未來想像：場站加值，成為上市說明書的創新亮點</h2>
+            <p>
+              寶盛國際計畫 2026～2027 年上櫃。<strong>試點合作案例</strong>可直接進入上市說明書，
+              展示場站加值能力與 ESG 創新服務——讓投資人看見嘟嘟房不只是停車場，
+              而是下一個智慧生活服務節點網絡的起點。
+            </p>
+          </div>
+          <div class="future-visual" aria-hidden="true">
+            <div class="metric"><b>174</b><span>全台<br>場站</span></div>
+            <div class="metric"><b>90<br>天</b><span>試點<br>驗證</span></div>
+            <div class="metric"><b>#1</b><span>品牌<br>認知</span></div>
+          </div>
+        </section>
+
+        <!-- Positioning + risk split -->
+        <div class="positioning">
+          <article class="statement">
+            <h2>合作定位：先以試點確認可行性</h2>
+            <p>
+              用 1 至 3 個桃園或台中場站快速驗證空間條件、消費者接受度與場站動線影響。
+              所有重要的事都由旺來負責，嘟嘟房只需提供現勘窗口。
+            </p>
+          </article>
+          <article class="risk-box">
+            <h3>風險全由旺來負責</h3>
+            <p>設備、客服、補貨、維修、法規申請、責任保險——嘟嘟房零資本投入。</p>
+          </article>
+        </div>
+
+        <!-- Trial flow -->
+        <h2 class="section-title">建議試點方式</h2>
+        <div class="flow">
+          <div class="flow-step">
+            <strong>1-3 站</strong>
+            <span>桃園、台中場站優先評估。</span>
+          </div>
+          <div class="flow-step">
+            <strong>90 天</strong>
+            <span>驗證使用次數、消費行為、場站動線影響。</span>
+          </div>
+          <div class="flow-step">
+            <strong>共同決定</strong>
+            <span>依據試點數據討論是否擴點。</span>
+          </div>
+        </div>
+        <div class="candidate-row" aria-label="初步優先評估區域">
+          <span class="pill">桃園市</span>
+          <span class="pill">台中市</span>
+          <span class="pill">依嘟嘟房場站分布決定</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <footer class="cta">
+        <div>
+          <h2>希望安排 30 分鐘會議</h2>
+          <p>確認嘟嘟房對複合型服務節點的初步想法、場站條件與試點規劃——其他事情旺來全部處理。</p>
+        </div>
+        <div class="cta-badge">30 分鐘<br>初步對焦</div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

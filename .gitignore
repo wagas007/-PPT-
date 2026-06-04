@@ -1,0 +1,34 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Python / tooling
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Generated slide / onepager exports
+**/ppt_export_slides/
+**/export/
+
+# Large generated media exports
+*.mp4
+*.mov
+*.avi
+*.zip
+*.7z
+*.rar
+
+# Keep source PPT / Excel / Word files trackable by default.
+# If a project creates heavy generated PPTX/PDF/PNG outputs,
+# place them under an export/ or ppt_export_slides/ folder.

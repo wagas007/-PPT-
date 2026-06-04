@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PARK24 / Times 社區型智慧服務據點試點提案</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --paper: #f4f6f9;
+      --white: #ffffff;
+      --navy: #212745;
+      --blue: #4e67c8;
+      --cyan: #5eccf3;
+      --green: #56c7aa;
+      --amber: #ffc72c;
+      --orange: #ff8021;
+      --red: #c94b43;
+      --soft-blue: #eef3ff;
+      --soft-amber: #fff6d8;
+      --soft-green: #eaf8f5;
+      --shadow: 0 18px 45px rgba(23, 32, 51, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #dfe4eb;
+      color: var(--ink);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .deck {
+      display: grid;
+      gap: 28px;
+      justify-items: center;
+      padding: 28px;
+    }
+
+    .slide {
+      position: relative;
+      width: min(1280px, calc(100vw - 56px));
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(23, 32, 51, .08);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 54px 64px 38px;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 199, 44, .18), transparent 24%),
+        linear-gradient(180deg, rgba(78, 103, 200, .08), transparent 35%);
+      pointer-events: none;
+    }
+
+    .slide > * { position: relative; z-index: 1; }
+
+    .slide-number {
+      position: absolute;
+      right: 32px;
+      bottom: 20px;
+      z-index: 2;
+      color: #98a2b3;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 13px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 5px;
+      background: var(--amber);
+      border-radius: 999px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      max-width: 900px;
+      font-size: 54px;
+      line-height: 1.14;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    h2 {
+      max-width: 1060px;
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .message {
+      max-width: 980px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.5;
+      font-weight: 650;
+    }
+
+    .content {
+      align-self: center;
+      display: grid;
+      gap: 24px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      color: #98a2b3;
+      font-size: 12px;
+      font-weight: 700;
+      padding-right: 36px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 4px solid var(--amber);
+      background: var(--navy);
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .pill-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 18px;
+      background: var(--soft-amber);
+      border: 1px solid #f0d46b;
+      color: #604a00;
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1.02fr .98fr; gap: 30px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .card {
+      min-height: 128px;
+      padding: 22px 24px;
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .card.dark {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    .card.amber { background: var(--soft-amber); border-color: #f0d46b; }
+    .card.green { background: var(--soft-green); border-color: #bde8de; }
+    .card.blue { background: var(--soft-blue); border-color: #cfd9ff; }
+
+    .card h3 {
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .card.dark p, .card.dark li { color: #dce4f5; }
+
+    ul.clean {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .65em;
+      width: 8px;
+      height: 8px;
+      background: var(--amber);
+    }
+
+    .big-number {
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 950;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .hero-visual {
+      min-height: 360px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, #f9fbff, #ffffff 48%, #fff5cf),
+        repeating-linear-gradient(90deg, transparent 0 44px, rgba(33, 39, 69, .045) 44px 46px);
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .parking-grid {
+      position: absolute;
+      inset: 44px 42px;
+      display: grid;
+      grid-template-columns: 1fr 92px 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .slot {
+      border: 2px solid #c8d0dc;
+      background: rgba(255,255,255,.65);
+    }
+
+    .road {
+      grid-row: 1 / -1;
+      grid-column: 2;
+      background: var(--navy);
+      position: relative;
+    }
+
+    .road::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      left: 50%;
+      border-left: 3px dashed rgba(255,255,255,.75);
+    }
+
+    .service-point {
+      position: absolute;
+      right: 56px;
+      bottom: 46px;
+      width: 150px;
+      height: 122px;
+      background: var(--amber);
+      border: 5px solid var(--navy);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 950;
+      color: var(--navy);
+    }
+
+    .callout {
+      padding: 24px 28px;
+      border-left: 8px solid var(--amber);
+      background: #f8fafc;
+      font-size: 26px;
+      line-height: 1.38;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .comparison .side {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .side.no { border-top: 8px solid #98a2b3; }
+    .side.yes { border-top: 8px solid var(--amber); background: #fffdf4; }
+
+    .side h3 {
+      font-size: 25px;
+      margin-bottom: 16px;
+      color: var(--navy);
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      align-items: stretch;
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .step {
+      min-height: 172px;
+      padding: 22px 18px;
+      border-right: 1px solid var(--line);
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+
+    .step:last-child { border-right: 0; }
+
+    .step .num {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: var(--amber);
+      font-weight: 950;
+      font-size: 16px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      line-height: 1.28;
+      font-weight: 900;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .table th {
+      background: var(--navy);
+      color: var(--white);
+      text-align: left;
+      padding: 12px 14px;
+      font-weight: 900;
+    }
+
+    .table td {
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-weight: 650;
+      line-height: 1.35;
+      vertical-align: top;
+    }
+
+    .table tr:nth-child(even) td { background: #f8fafc; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 26px;
+      padding: 0 8px;
+      background: var(--amber);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .risk-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+    .risk-row:last-child { border-bottom: 1px solid var(--line); }
+
+    .risk-row > div {
+      padding: 16px 18px;
+      font-size: 17px;
+      line-height: 1.4;
+      font-weight: 700;
+      border-right: 1px solid var(--line);
+    }
+
+    .risk-row > div:last-child { border-right: 0; }
+    .risk-name { color: var(--navy); font-weight: 950 !important; background: #fffdf3; }
+    .control { color: #15745f; background: #f1fbf8; }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cta {
+      min-height: 190px;
+      padding: 26px 24px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 8px;
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .cta .num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: var(--amber);
+      color: var(--navy);
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .cta h3 { font-size: 25px; line-height: 1.25; }
+    .cta p { color: #dce4f5; font-size: 17px; line-height: 1.45; font-weight: 650; }
+
+    .source-note {
+      color: #98a2b3;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .cover {
+      grid-template-rows: 1fr auto;
+      background:
+        linear-gradient(115deg, rgba(33, 39, 69, .96) 0%, rgba(33, 39, 69, .92) 52%, rgba(255, 199, 44, .96) 52%, rgba(255, 199, 44, .9) 100%);
+      color: var(--white);
+    }
+
+    .cover::before {
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,.12)),
+        repeating-linear-gradient(0deg, transparent 0 42px, rgba(255,255,255,.045) 42px 43px);
+    }
+
+    .cover h1 {
+      color: var(--white);
+      max-width: 830px;
+      font-size: 55px;
+      line-height: 1.16;
+    }
+
+    .cover .message {
+      color: #e9edf7;
+      max-width: 700px;
+      font-size: 23px;
+    }
+
+    .cover .content {
+      align-self: center;
+      max-width: 760px;
+    }
+
+    .cover .pill {
+      background: rgba(255, 255, 255, .13);
+      border-color: rgba(255, 255, 255, .25);
+      color: var(--white);
+    }
+
+    .cover .mark {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--amber);
+    }
+
+    .cover .brand { color: var(--white); }
+
+    .large-statement {
+      font-size: 41px;
+      line-height: 1.28;
+      font-weight: 950;
+      color: var(--navy);
+    }
+
+    .compact-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini {
+      padding: 13px 15px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      font-size: 16px;
+      font-weight: 750;
+      line-height: 1.35;
+    }
+
+    @media print {
+      body { background: white; }
+      .deck { padding: 0; gap: 0; }
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+        page-break-after: always;
+        border: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide cover">
+      <div class="content">
+        <div class="brand"><span class="mark">WL</span> 旺來瓦斯 × PARK24 / Times</div>
+        <h1>PARK24 / Times 社區型智慧服務據點試點提案</h1>
+        <p class="message">先以 1 至 3 個示範場站，驗證低干擾合作可行性，再評估台中與桃園擴點。</p>
+        <div class="pill-row">
+          <span class="pill">1-3 個示範點</span>
+          <span class="pill">90 天試點</span>
+          <span class="pill">30 分鐘總部簡報</span>
+        </div>
+      </div>
+      <div class="footer"><span>Static business proposal preview</span><span>2026.06</span></div>
+      <span class="slide-number">01</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">一頁式結論</div>
+        <h2>這件事值得 Times 總部花 30 分鐘，因為風險小、價值清楚、可先驗證</h2>
+        <p class="message">本案不要求 Times 立即承諾大量場站，而是用小規模試點確認空間、供電、管理負擔與服務價值。</p>
+      </header>
+      <div class="content grid-2">
+        <div class="callout">先把合作設計成可控試點，而不是一次性的場站開發案。</div>
+        <div class="grid-2" style="gap:16px">
+          <div class="card amber"><h3>小規模</h3><p>先確認 1 至 3 個示範點，不在試點前承諾大量點位。</p></div>
+          <div class="card blue"><h3>低干擾</h3><p>旺來負責設備、客服、補貨、維運與異常處理。</p></div>
+          <div class="card green"><h3>可協作</h3><p>Times 協助候選場站、權責、供電與現勘窗口確認。</p></div>
+          <div class="card"><h3>可回顧</h3><p>90 天後以數據回顧是否進入下一階段。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy</span></div>
+      <span class="slide-number">02</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">合作對象適配性</div>
+        <h2>Times 的多據點與標準化治理，適合用總部框架評估試點</h2>
+        <p class="message">PARK24 / Times 具備多據點、標準化、設備化與智慧停車基礎，因此比單點場站更適合由總部先建立試點評估框架。</p>
+      </header>
+      <div class="content">
+        <div class="grid-3">
+          <div class="card amber"><div class="big-number">1,000+</div><h3>多據點規模</h3><p>在台灣已有 1,000 多場 Times 停車場，具跨區複製潛力。</p></div>
+          <div class="card blue"><h3>標準化治理</h3><p>日系治理與 100% 集團持股背景，適合以合規、標準、風險文件溝通。</p></div>
+          <div class="card green"><h3>正式提案路徑</h3><p>總公司與官網合作入口明確，適合由總部建立評估框架。</p></div>
+        </div>
+        <div class="callout" style="font-size:24px">若未取得總部框架，單點溝通容易卡在權責、用電與品牌安全。</div>
+      </div>
+      <div class="footer"><span>來源：Project Master 01/02、BD Strategy</span></div>
+      <span class="slide-number">03</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">場站價值機會</div>
+        <h2>停車場的邊角空間有機會轉化為不影響本業的生活服務接點</h2>
+        <p class="message">旺來想解決的不是停車收入問題，而是如何在不影響車格、車道與現場管理的前提下，活化低使用邊角空間。</p>
+      </header>
+      <div class="content grid-2">
+        <div class="hero-visual">
+          <div class="parking-grid">
+            <div class="slot"></div><div class="road"></div><div class="slot"></div>
+            <div class="slot"></div><div class="slot"></div>
+            <div class="slot"></div><div class="slot"></div>
+            <div class="slot"></div><div class="slot"></div>
+          </div>
+          <div class="service-point">智慧<br>服務據點</div>
+        </div>
+        <div class="card">
+          <ul class="clean">
+            <li>只評估不影響停車收益與車流動線的空間。</li>
+            <li>優先選擇室外或地面層、邊角明確、補貨可短停的場站。</li>
+            <li>場站可從單一停車功能延伸為社區生活服務節點。</li>
+            <li>合作價值在於服務深度與場域活化，而不是單點租金。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、Project Master TOP10</span></div>
+      <span class="slide-number">04</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">合作本質</div>
+        <h2>本案不是租格位，而是在既有停車場疊加智慧自取服務</h2>
+        <p class="message">對外溝通必須避開「租停車格」語氣，改以低干擾智慧服務據點說明合作本質。</p>
+      </header>
+      <div class="content comparison">
+        <div class="side no">
+          <h3>不是</h3>
+          <ul class="clean">
+            <li>不是承租停車格</li>
+            <li>不是一開始要求大量點位</li>
+            <li>不是改變停車場核心營運</li>
+            <li>不是把管理工作轉嫁給 Times</li>
+          </ul>
+        </div>
+        <div class="side yes">
+          <h3>而是</h3>
+          <ul class="clean">
+            <li>以 1 至 3 點先行驗證</li>
+            <li>使用不影響車格與車道的邊角空間</li>
+            <li>導入社區型智慧自取服務</li>
+            <li>旺來承擔設備與服務營運責任</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy Objection Handling</span></div>
+      <span class="slide-number">05</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">Times 可取得的價值</div>
+        <h2>Times 可用低管理成本測試場站坪效、服務深度與智慧場域形象</h2>
+        <p class="message">對 Times 的價值不是單點租金，而是用低成本試點取得場站服務延伸的可行性數據。</p>
+      </header>
+      <div class="content">
+        <div class="matrix">
+          <div class="card amber"><h3>坪效</h3><p>活化低使用角落，提升場站服務價值。</p></div>
+          <div class="card blue"><h3>服務</h3><p>讓停車場延伸為社區生活服務節點。</p></div>
+          <div class="card green"><h3>品牌</h3><p>強化智慧停車場域導入新型態服務的形象。</p></div>
+          <div class="card"><h3>數據</h3><p>以 90 天 KPI 檢驗使用量、異常率、客訴率與場站回饋。</p></div>
+        </div>
+        <div class="callout" style="font-size:24px">若數據成立，再評估跨區擴點；不以單點租金作為唯一合作價值。</div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、Project Master Company DD</span></div>
+      <span class="slide-number">06</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">雙方分工</div>
+        <h2>旺來承擔營運工作，Times 只需協助總部與場站條件確認</h2>
+        <p class="message">合作設計的前提是不增加 Times 現場管理負擔，將客服、維運、補貨與異常處理由旺來承接。</p>
+      </header>
+      <div class="content grid-2">
+        <div class="card dark">
+          <h3>旺來負責</h3>
+          <ul class="clean">
+            <li>設備與商品/服務營運</li>
+            <li>客服、補貨、維運與異常處理</li>
+            <li>保險、安全文件與試點數據回顧</li>
+          </ul>
+        </div>
+        <div class="card amber">
+          <h3>PARK24 / Times 協助</h3>
+          <ul class="clean">
+            <li>候選場站推薦</li>
+            <li>場地權責與供電可行性協助</li>
+            <li>保留通報窗口與現勘協調</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy</span></div>
+      <span class="slide-number">07</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">試點節奏</div>
+        <h2>先用 1 至 3 個示範場站跑 90 天，才判斷是否擴大合作</h2>
+        <p class="message">試點規模必須小、時間明確、評估指標可量化，讓總部能用風險可控的方式做決策。</p>
+      </header>
+      <div class="content">
+        <div class="timeline">
+          <div class="step"><span class="num">1</span><h3>候選確認</h3><p>由總部或承辦窗口提供候選，旺來同步提出 TOP10 討論素材。</p></div>
+          <div class="step"><span class="num">2</span><h3>現勘評估</h3><p>確認空間、供電、動線、補貨短停與場站權責。</p></div>
+          <div class="step"><span class="num">3</span><h3>1-3 點試行</h3><p>先從少量示範點啟動，不先承諾 20 點。</p></div>
+          <div class="step"><span class="num">4</span><h3>90 天回顧</h3><p>追蹤使用量、補貨效率、異常率、客訴率與用電穩定性。</p></div>
+          <div class="step"><span class="num">5</span><h3>擴點評估</h3><p>數據成立後，再評估台中與桃園約 20 個合作據點。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy</span></div>
+      <span class="slide-number">08</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">案場篩選標準</div>
+        <h2>案場篩選先看空間、供電、動線與權責，避免試點一開始就卡關</h2>
+        <p class="message">候選案場不是看人流越多越好，而是先確認是否具備低干擾設置條件。</p>
+      </header>
+      <div class="content grid-4">
+        <div class="card amber"><h3>空間</h3><p>室外或地面層、具邊角、不影響車格與車道。</p></div>
+        <div class="card blue"><h3>供電</h3><p>既有設備訊號、電箱距離、合法分接或計量方式。</p></div>
+        <div class="card green"><h3>營運</h3><p>補貨可短停，履約半徑可接受。</p></div>
+        <div class="card"><h3>權責</h3><p>地主、管委會、委託管理權限與簽約主體清楚。</p></div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、Project Master Power/Risk</span></div>
+      <span class="slide-number">09</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">首波候選場站</div>
+        <h2>台中首波候選以南屯、西區與西屯 A 級場站優先進入討論</h2>
+        <p class="message">TOP10 只作為總部討論素材，不宣稱已可設置；第一波可優先從 A 級場站中挑選 1 至 3 點現勘。</p>
+      </header>
+      <div class="content">
+        <table class="table">
+          <thead>
+            <tr><th>優先</th><th>候選場站</th><th>區域</th><th>推薦原因</th><th>待確認</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="tag">A</span></td><td>台中大業路第2</td><td>南屯區</td><td>南屯生活圈，月租+臨停，具生活密度</td><td>合法分接、邊角空間、補貨短停</td></tr>
+            <tr><td><span class="tag">A</span></td><td>台中大英街</td><td>南屯區</td><td>住宅商圈混合，設備訊號完整</td><td>設備位置距離、場站權責</td></tr>
+            <tr><td><span class="tag">A</span></td><td>台中大和路第2</td><td>西區</td><td>住宅+商圈，月租客群穩定</td><td>邊角與動線、供電可行性</td></tr>
+            <tr><td><span class="tag">A</span></td><td>台中文心路</td><td>西屯區</td><td>幹道與商辦/住宅節點</td><td>車流強，需避開主要動線</td></tr>
+          </tbody>
+        </table>
+        <div class="mini">B 級場站作為備選：美村路第2、大里文化街、大里新明路、育強街、東海夜市第2、振興路。若 Times 有更適合台中或桃園場站，可由總部提供 3 至 5 個候選點。</div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy、Project Master TOP30/TOP10</span></div>
+      <span class="slide-number">10</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">前置風險控管</div>
+        <h2>供電、動線與權責可透過總部確認與現勘前置控管</h2>
+        <p class="message">本案可行性不靠口頭承諾，而是在總部會議後用現勘與風險表把關，讓試點條件先被釐清。</p>
+      </header>
+      <div class="content">
+        <div class="risk-row">
+          <div class="risk-name">供電</div>
+          <div>確認有沒有電、能不能合法接、成本是否合理。</div>
+          <div class="control">採 Availability、Accessibility、Economics 三層判斷；供電不足不列 A。</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-name">動線</div>
+          <div>設備不得影響車道、車格、出入口與行人安全。</div>
+          <div class="control">現勘確認不占格、不擋車流，避開入口與尖峰動線。</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-name">權責</div>
+          <div>確認同意權、簽約主體、地主或管委會限制。</div>
+          <div class="control">由總部協助確認各案場權責與審查流程。</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-name">品牌安全</div>
+          <div>避免「瓦斯」字眼造成過度安全疑慮。</div>
+          <div class="control">以社區型智慧服務據點表述，安全文件與退出機制另附。</div>
+        </div>
+      </div>
+      <div class="footer"><span>來源：Project Master Power Analysis/Risk Register、Headquarter Proposal</span></div>
+      <span class="slide-number">11</span>
+    </section>
+
+    <section class="slide">
+      <header>
+        <div class="eyebrow">下一步</div>
+        <h2>下一步只需確認窗口、候選場站與 30 分鐘總部簡報時間</h2>
+        <p class="message">本次邀約的目標不是立即簽約，而是建立正式討論機制，確認是否進入 1 至 3 點試點評估。</p>
+      </header>
+      <div class="content">
+        <div class="cta-panel">
+          <div class="cta"><span class="num">1</span><h3>安排簡報</h3><p>確認營運開發、特約合作或異業合作承辦窗口，安排 30 分鐘討論。</p></div>
+          <div class="cta"><span class="num">2</span><h3>確認候選</h3><p>由總部或承辦窗口提供 3 至 5 個候選點，與旺來 TOP10 素材交叉評估。</p></div>
+          <div class="cta"><span class="num">3</span><h3>現勘評估</h3><p>會後完成現勘表、供電判斷、試點 KPI 與責任分工。</p></div>
+        </div>
+        <div class="callout" style="font-size:24px">會議目標：確認承辦窗口、候選場站、供電資料、現勘流程與下一次評估會議。</div>
+      </div>
+      <div class="footer"><span>來源：Headquarter Proposal、BD Strategy、Project Master Action Plan</span></div>
+      <span class="slide-number">12</span>
+    </section>
+  </main>
+</body>
+</html>
