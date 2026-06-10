@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>旺來瓦斯｜桃園店面承租說明</title>
+  <style>
+    :root{
+      --orange:#f05a24;
+      --ink:#202020;
+      --muted:#666;
+      --line:#e8d8ce;
+      --paper:#fffdfb;
+      --soft:#fff4ed;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:#ececec;
+      font-family:"Microsoft JhengHei","Noto Sans TC",Arial,sans-serif;
+      color:var(--ink);
+    }
+    .page{
+      width:794px;
+      min-height:1123px;
+      margin:24px auto;
+      background:var(--paper);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+      padding:34px 42px 58px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:3px solid var(--orange);
+      padding-bottom:14px;
+    }
+    .logo{height:40px;object-fit:contain}
+    .tag{
+      color:var(--orange);
+      font-weight:900;
+      font-size:18px;
+    }
+    h1{
+      font-size:45px;
+      line-height:1.12;
+      margin:26px 0 14px;
+      letter-spacing:0;
+    }
+    .highlight{color:var(--orange)}
+    .lead{
+      margin:0 0 18px;
+      font-size:23px;
+      line-height:1.48;
+      font-weight:800;
+    }
+    .hero-photo{
+      width:100%;
+      height:604px;
+      object-fit:contain;
+      display:block;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+    .caption{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-top:12px;
+      padding:12px 14px;
+      border-left:7px solid var(--orange);
+      background:var(--soft);
+      color:#333;
+      font-size:16px;
+    }
+    .chips{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:18px;
+    }
+    .chip{
+      border:1px solid #ffc9b2;
+      background:#fff;
+      text-align:center;
+      padding:13px 8px;
+      min-height:86px;
+    }
+    .chip b{
+      display:block;
+      color:var(--orange);
+      font-size:23px;
+      line-height:1.1;
+      margin-bottom:6px;
+    }
+    .chip span{
+      display:block;
+      font-size:15px;
+      line-height:1.32;
+    }
+    .section-title{
+      margin:24px 0 13px;
+      color:var(--orange);
+      font-size:29px;
+      line-height:1.18;
+      font-weight:900;
+    }
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .box{
+      background:#fff;
+      border:1px solid var(--line);
+      padding:18px 20px;
+      min-height:216px;
+    }
+    .box.good{
+      background:var(--soft);
+      border:2px solid #ffb08d;
+    }
+    .box h3{
+      margin:0 0 13px;
+      font-size:27px;
+      line-height:1.15;
+    }
+    .box.good h3{color:var(--orange)}
+    ul{list-style:none;margin:0;padding:0}
+    li{
+      position:relative;
+      padding-left:25px;
+      margin:9px 0;
+      font-size:19px;
+      line-height:1.42;
+    }
+    li:before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:10px;
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:var(--orange);
+    }
+    .bottle-band{
+      display:grid;
+      grid-template-columns:310px 1fr;
+      gap:16px;
+      align-items:stretch;
+      margin-top:14px;
+    }
+    .bottle-photo{
+      min-height:286px;
+      border:1px solid var(--line);
+      background-image:url("../澎湖金龍發智取櫃_北屯智取櫃.png");
+      background-size:220%;
+      background-position:7% 96%;
+      background-repeat:no-repeat;
+      background-color:#fff;
+    }
+    .bottle-copy{
+      border:2px solid #ffb08d;
+      background:#fff8f4;
+      padding:20px 22px;
+    }
+    .bottle-copy h3{
+      margin:0 0 10px;
+      color:var(--orange);
+      font-size:30px;
+      line-height:1.18;
+    }
+    .bottle-copy p{
+      margin:0;
+      font-size:20px;
+      line-height:1.45;
+      font-weight:800;
+    }
+    .mini-points{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:14px;
+    }
+    .mini-point{
+      background:#fff;
+      border:1px solid #ffd1bd;
+      padding:10px;
+      font-size:17px;
+      font-weight:900;
+      text-align:center;
+    }
+    .landlord-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:12px;
+    }
+    .landlord-card{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:17px 15px;
+      min-height:136px;
+    }
+    .landlord-card b{
+      display:block;
+      color:var(--orange);
+      font-size:27px;
+      margin-bottom:8px;
+    }
+    .landlord-card p{
+      margin:0;
+      font-size:18px;
+      line-height:1.42;
+      font-weight:700;
+    }
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid #ffd1bd;
+      background:#fff;
+    }
+    .step{
+      min-height:108px;
+      padding:13px 11px;
+      text-align:center;
+      border-right:1px solid #ffd1bd;
+    }
+    .step:last-child{border-right:0}
+    .step b{
+      display:block;
+      color:var(--orange);
+      font-size:26px;
+      margin-bottom:5px;
+    }
+    .step span{
+      display:block;
+      font-size:16px;
+      line-height:1.35;
+      font-weight:700;
+    }
+    .big-note{
+      margin-top:18px;
+      padding:18px 20px;
+      background:#202020;
+      color:#fff;
+      font-size:23px;
+      line-height:1.42;
+      font-weight:900;
+    }
+    .footer{
+      position:absolute;
+      left:42px;
+      right:42px;
+      bottom:22px;
+      display:flex;
+      justify-content:space-between;
+      color:#777;
+      font-size:13px;
+      border-top:1px solid var(--line);
+      padding-top:10px;
+    }
+    @media print{
+      body{background:#fff}
+      .page{
+        margin:0;
+        width:794px;
+        height:1123px;
+        box-shadow:none;
+        page-break-after:always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="topbar">
+      <img class="logo" src="../shared_assets/wagas-logo.png" alt="旺來瓦斯">
+      <div class="tag">桃園一樓店面承租說明</div>
+    </div>
+
+    <h1><span class="highlight">智慧化、安全化</span>的<br>家庭能源服務門市。</h1>
+    <p class="lead">旺來不是把店面做成傳統瓦斯行，也不是把鋼瓶隨意堆放在室內外；我們希望以智慧自取櫃與瓶安桶，打造乾淨、可管理、可預約的能源服務門市。</p>
+
+    <img class="hero-photo" src="../澎湖金龍發智取櫃_北屯智取櫃.png" alt="旺來瓦斯北屯與澎湖智慧自取櫃">
+    <div class="caption">
+      <strong>實際落地案例：北屯與澎湖智慧自取櫃</strong>
+      <span>完整櫃體、品牌化外觀、清楚動線與標示</span>
+    </div>
+
+    <div class="chips">
+      <div class="chip"><b>預約制</b><span>依訂單取桶<br>不隨意堆放</span></div>
+      <div class="chip"><b>智慧櫃</b><span>固定櫃體管理<br>現場整齊</span></div>
+      <div class="chip"><b>瓶安桶</b><span>複合材料桶<br>非傳統鋼瓶</span></div>
+      <div class="chip"><b>旺來負責</b><span>營運、客服<br>補貨與維護</span></div>
+    </div>
+
+    <div class="footer">
+      <span>旺來瓦斯股份有限公司｜店面承租說明</span>
+      <span>智慧能源服務門市</span>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="topbar">
+      <img class="logo" src="../shared_assets/wagas-logo.png" alt="旺來瓦斯">
+      <div class="tag">一樓店面 × 智慧能源服務</div>
+    </div>
+
+    <div class="section-title">傳統桶裝瓦斯印象，旺來用新模式解決</div>
+    <div class="compare">
+      <div class="box">
+        <h3>傳統印象</h3>
+        <ul>
+          <li>店面堆滿瓦斯桶，門面不好看</li>
+          <li>人員進出複雜，管理麻煩</li>
+          <li>鋼瓶笨重、生鏽、有安全疑慮</li>
+          <li>鄰居看到「瓦斯」會緊張</li>
+        </ul>
+      </div>
+      <div class="box good">
+        <h3>旺來模式</h3>
+        <ul>
+          <li>智慧櫃體呈現，店面外觀整齊</li>
+          <li>預約自取，流程可控</li>
+          <li>瓶安桶輕量、防鏽、可透視</li>
+          <li>由旺來負責營運、客服與維護</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">瓶安桶：外觀與安全感都不同</div>
+    <div class="bottle-band">
+      <div class="bottle-photo" aria-label="旺來瓶安桶展示"></div>
+      <div class="bottle-copy">
+        <h3>不是傳統黑色鋼瓶，<br>是複合材料瓶安桶。</h3>
+        <p>瓶身乾淨、品牌化，能降低「傳統瓦斯桶」帶來的老舊與危險印象。</p>
+        <div class="mini-points">
+          <div class="mini-point">輕量</div>
+          <div class="mini-point">防鏽</div>
+          <div class="mini-point">可透視</div>
+          <div class="mini-point">檢驗合格</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">店面承租能帶來什麼？</div>
+    <div class="landlord-grid">
+      <div class="landlord-card">
+        <b>穩定租金</b>
+        <p>以正規公司承租店面，建立清楚租賃關係。</p>
+      </div>
+      <div class="landlord-card">
+        <b>門面乾淨</b>
+        <p>不是傳統堆桶店面，而是品牌化智慧櫃展示。</p>
+      </div>
+      <div class="landlord-card">
+        <b>管理單純</b>
+        <p>現場營運、客戶服務與設備維護由旺來承擔。</p>
+      </div>
+    </div>
+
+    <div class="section-title">合作方式簡單、責任清楚</div>
+    <div class="process">
+      <div class="step"><b>1</b><span>確認店面格局<br>門面與櫃體位置</span></div>
+      <div class="step"><b>2</b><span>確認用電與出入<br>維持現場整齊</span></div>
+      <div class="step"><b>3</b><span>確認安全與權責<br>旺來提供資料</span></div>
+      <div class="step"><b>4</b><span>簽訂租賃條件<br>穩定營運管理</span></div>
+    </div>
+
+    <div class="big-note">
+      旺來希望承租的是可以維持門面整潔、管理清楚、預約取件的智慧能源服務門市。
+    </div>
+
+    <div class="footer">
+      <span>旺來瓦斯股份有限公司｜店面承租說明</span>
+      <span>乾淨門面｜安全管理｜穩定承租</span>
+    </div>
+  </section>
+</body>
+</html>

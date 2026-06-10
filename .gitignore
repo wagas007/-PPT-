@@ -16,6 +16,8 @@ node_modules/
 *.tmp
 *.temp
 ~$*
+debug.log
+*.log
 
 # Generated slide / onepager exports
 **/ppt_export_slides/
